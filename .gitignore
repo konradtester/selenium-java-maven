@@ -1,0 +1,11 @@
+# Git ignore for selenium_java_maven
+.DS_Store
+.env
+target/
+*.class
+*.log
+.idea/
+*.iml
+.vscode/
+bin/
+tmp/
