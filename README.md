@@ -48,63 +48,59 @@ selenium_java_maven/
 
 ---
 
-## ⚙️ 1. Quick Start
+## ⚙️ 1. Szybki Start (macOS & Windows)
 
-### Prerequisites
-* JDK 17 or newer
-* Maven 3.9+ (or use your IDE's bundled Maven)
-* Chrome or Firefox installed locally (Selenium Manager downloads the matching driver automatically)
+### Wymagania wstępne:
+* JDK 17 lub nowsza (`java -version`)
+* Maven 3.9+ (lub wbudowany Maven z Twojego IDE)
+* Zainstalowana lokalnie przeglądarka Chrome lub Firefox (Selenium Manager automatycznie pobierze dopasowany sterownik)
 
-### Configure the environment (`.env`)
+### Konfiguracja środowiska (`.env`)
 
-Copy `.env.example` to `.env`:
-```bash
-cp .env.example .env
-```
+Skopiuj szablon `.env.example` jako `.env`:
+* **macOS/Linux**:
+  ```bash
+  cp .env.example .env
+  ```
+* **Windows**:
+  ```cmd
+  copy .env.example .env
+  ```
 
-The defaults already work against the public demo site/API:
-```env
-BASE_URL=https://the-internet.herokuapp.com
-API_BASE_URL=https://jsonplaceholder.typicode.com
-USERNAME=tomsmith
-PASSWORD=SuperSecretPassword!
-EMAIL_TEMPLATE=test+{{random}}@example.com
-```
+Domyślne ustawienia są od razu skonfigurowane do pracy z publiczną stroną demonstracyjną.
 
-When you're ready to test your own app, replace `BASE_URL`/`API_BASE_URL` and the credentials with your own, and update the locators in `src/test/java/e2e/pages/locators/`.
-
-### Install dependencies & compile
+### Kompilacja:
 ```bash
 mvn compile
 ```
 
 ---
 
-## 🏃 2. Running the Tests
+## 🏃 2. Uruchamianie Testów
 
 ```bash
 mvn test
 ```
 
-### Headless mode (no browser window, e.g. on CI)
+### Uruchomienie w tle (Headless):
 ```bash
 mvn test -Dheadless=true
 ```
 
-### Choosing a browser
-Default is `chrome`; `firefox` is also supported:
+### Wybór innej przeglądarki (np. Firefox):
+Domyślną przeglądarką jest `chrome`; `firefox` jest również obsługiwany:
 ```bash
 mvn test -Dbrowser=firefox
 ```
 
-### Running a single scenario or feature
-Use Cucumber's own filtering via a system property, or point at one feature file:
+### Uruchomienie konkretnego scenariusza lub tagu:
+Możesz użyć filtrowania po tagach Cucumber za pomocą właściwości systemowej:
 ```bash
 mvn test -Dcucumber.filter.tags="@smoke"
 ```
-(Tag your scenario with `@smoke` in the `.feature` file to use this.)
+*(Wystarczy dodać `@smoke` nad scenariuszem w pliku `.feature`).*
 
-*Tip: most IDEs (IntelliJ, VS Code with the Java + Cucumber extensions) can also run `RunCucumberTest` or individual `.feature` files directly.*
+*Wskazówka: Większość środowisk IDE (np. IntelliJ, VS Code) pozwala na uruchamianie pojedynczych scenariuszy bezpośrednio z edytora za pomocą ikony "Run" obok kodu.*
 
 ---
 
